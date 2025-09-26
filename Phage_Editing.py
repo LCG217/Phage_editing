@@ -1,6 +1,5 @@
 import primer3
 from Bio import SeqIO
-import pandas as pd
 
 # file for main sequence and any insert sequence
 import primer3
