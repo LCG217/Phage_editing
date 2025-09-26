@@ -1,5 +1,6 @@
 import primer3
 from Bio import SeqIO
+import pandas as pd
 
 # file for main sequence and any insert sequence
 import primer3
@@ -184,3 +185,9 @@ while current_location < genomelength:
     # Prepare for next loop
     primer_index += 1
     current_location = right_loc - 65
+
+output_str = ''
+for key,value in all_primer_pairs.items():
+    output_str += f">{key}_fwd\n{value['forward']}\n>{key}_rev\n{value['reverse']}\n"
+
+print(output_str)
