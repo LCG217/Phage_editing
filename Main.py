@@ -31,7 +31,7 @@ print(f"Main sequence file: {file_path}")
 print(f"Insert sequence: {insert_file if insert_file else 'Not used'}")
 print(f"Exclusion zones: {exclusion_zones if exclusion_zones else 'None'}")
 
-# number of overhang bases
+# overhang bases
 FLANK = 20
 
 # Primer design parameters
@@ -160,7 +160,7 @@ def size_range(size_range_min, Seq_Start):
     return size_range_min
 
 
-# function to create excel file of primers for easy importing/ordering
+# function to create excel and csv files of primers for easy importing/ordering
 def export_primers_to_excel(primer_dict, filename="primers.xlsx"):
     rows = []
 
@@ -171,7 +171,12 @@ def export_primers_to_excel(primer_dict, filename="primers.xlsx"):
     df = pd.DataFrame(rows)
     df.to_excel(filename, index=False)
 
+    # Also save as CSV
+    csv_filename = filename.replace('.xlsx', '.csv')
+    df.to_csv(csv_filename, index=False)
+
     print(f"Primers saved to Excel file: {filename}")
+    print(f"Primers saved to CSV file: {csv_filename}")
 
 
 # loop for main code
